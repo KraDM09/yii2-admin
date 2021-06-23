@@ -1,7 +1,7 @@
 $('#parent_name').autocomplete({
     source: function (request, response) {
         var result = [];
-        var limit = 10;
+        var limit = 100;
         var term = request.term.toLowerCase();
         $.each(_opts.menus, function () {
             var menu = this;
@@ -30,6 +30,8 @@ $('#parent_name').autocomplete({
         $('#parent_id').val('');
     }
 }).autocomplete("instance")._renderItem = function (ul, item) {
+    ul.addClass('ui-autocomplete-parent-name');
+    
     return $("<li>")
         .append($('<a>').append($('<b>').text(item.name)).append('<br>')
             .append($('<i>').text(item.parent_name + ' | ' + item.route)))
